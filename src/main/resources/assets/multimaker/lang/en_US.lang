@@ -1,0 +1,17 @@
+item.multimaker:chunkyBacon.name=Chunky Bacon
+item.multimaker:donut.name=Mmm... Donut
+item.multimaker:glassSword.name=Glass Sword
+item.multimaker:uranium.name=Uranium
+item.multimaker:plumbum.name=Lead (Pb)
+item.multimaker:orangeFruit.name=Orange
+item.multimaker:cocoaNibs.name=Cocoa Nibs
+item.multimaker:chocolateLiquor.name=Chocolate Liquor
+item.multimaker:darkChocolate.name=Dark Chocolate
+item.multimaker:milkChocolate.name=Milk Chocolate
+item.multimaker:lemonade.name=Lemonade
+item.multimaker:lemon.name=Lemon
+item.multimaker:cherry.name=Cherry
+item.multimaker:combustibleLemon.name=Combustible Lemon
+tile.multimaker:uraniumBlock.name=Block of Uranium
+tile.multimaker:leadBlock.name=Block of Lead
+tile.multimaker:uraniumOre.name=Uranium Ore

@@ -1,0 +1,6 @@
+{
+    "parent": "item/bottle_drinkable",
+    "textures": {
+        "layer0": "multimaker:item/lemonade"
+    }
+}
