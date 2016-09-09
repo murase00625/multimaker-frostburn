@@ -23,6 +23,17 @@ For now, download the repo as a ZIP file (or clone it) and copy the contents of 
 
 As this is an experimental project, I'm not accepting patches or pull requests at this time. Those brave souls who wish to use this mod as a base for their mods are more than welcome to fork it (see License below).
 
+## Changelog
+
+Changes from the mod for 1.8.9:
+
+- Removed all packages, resource folders, and mods named "makersville" to FINALLY eliminate rendering bugs caused by laziness. Old mod code moved to a "misc" subpackage under multimaker.
+- Updated rendering helper class to use 1.9+ code and removed its dependency on the mod ID.
+- Updated all Item and Block initialization code to use 1.9+ requirements (primarily, registry names instead of unlocalized names).
+- Updated en_US.lang to use the generated unlocalized names.
+- Added Combustible Lemons: Monkey-patched an issue where the initial velocity for thrown Combustible Lemons was zero.
+- Added Lemonade.
+
 ## License
 
 The MIT License (MIT)
