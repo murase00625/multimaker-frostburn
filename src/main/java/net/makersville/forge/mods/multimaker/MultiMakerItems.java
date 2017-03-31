@@ -17,6 +17,7 @@ import net.makersville.forge.mods.multimaker.orchard.OrangeFruit;
 import net.makersville.forge.mods.multimaker.physicalscience.LeadPb;
 import net.makersville.forge.mods.multimaker.physicalscience.Uranium;
 import net.makersville.forge.mods.util.ForgeUtils;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.Item;
@@ -128,6 +129,17 @@ public class MultiMakerItems {
 				new Object[] {chocolateLiquor, Items.SUGAR});
 		GameRegistry.addShapelessRecipe(new ItemStack(milkChocolate, 4),
 				new Object[] {chocolateLiquor, Items.SUGAR, Items.MILK_BUCKET});
+		GameRegistry.addShapelessRecipe(new ItemStack(lemon, 64),
+				new Object[] {Items.CAKE});
+		
+		GameRegistry.addRecipe(new ItemStack(combustibleLemon, 4),
+				"flf",
+				"ltl",
+				"flf",
+				'l', lemon,
+				't', Item.getItemFromBlock(Blocks.TNT),
+				'f', Items.FIRE_CHARGE
+				);
 	}
 	
 }
