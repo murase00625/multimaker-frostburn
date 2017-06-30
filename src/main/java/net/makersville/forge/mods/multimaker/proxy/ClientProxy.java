@@ -2,6 +2,7 @@ package net.makersville.forge.mods.multimaker.proxy;
 
 import net.makersville.forge.mods.multimaker.MultiMakerBlocks;
 import net.makersville.forge.mods.multimaker.MultiMakerItems;
+import net.makersville.forge.mods.multimaker.misc.CombustibleLemon;
 import net.makersville.forge.mods.multimaker.misc.EntityCombustibleLemon;
 import net.makersville.student.examplemod.ItemDictionary;
 import net.minecraft.client.Minecraft;
@@ -34,7 +35,7 @@ public class ClientProxy extends CommonProxy {
 					public Render<? super EntityCombustibleLemon>
 						createRenderFor(RenderManager manager) {
 							return new RenderSnowball(manager,
-								MultiMakerItems.combustibleLemon,
+								MultiMakerItems.getItem(CombustibleLemon.NAME),
 								Minecraft.getMinecraft().getRenderItem());
 					}
 					

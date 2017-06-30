@@ -1,5 +1,7 @@
 package net.makersville.forge.mods.multimaker;
 
+import java.util.HashMap;
+
 import net.makersville.forge.mods.multimaker.misc.Bacon;
 import net.makersville.forge.mods.multimaker.misc.CombustibleLemon;
 import net.makersville.forge.mods.multimaker.misc.EntityCombustibleLemon;
@@ -27,34 +29,42 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class MultiMakerItems {
 	
-	public static Item orange;
-	public static Item uranium;
-	public static Item plumbum;
-	public static Item cocoaNibs;
-	public static Item chocolateLiquor;
-	public static Item darkChocolate;
-	public static Item milkChocolate;	
-	public static Item cherry;
-	public static Item lemon;
-	public static Item glassSword;
-	public static Item bacon;
-	public static Item lemonade;
-	public static Item combustibleLemon;
+	public static HashMap<String,Item> itemMap =
+			new HashMap<String,Item>();
+	
+//	public static Item orange;
+//	public static Item uranium;
+//	public static Item plumbum;
+//	public static Item cocoaNibs;
+//	public static Item chocolateLiquor;
+//	public static Item darkChocolate;
+//	public static Item milkChocolate;	
+//	public static Item cherry;
+//	public static Item lemon;
+//	public static Item glassSword;
+//	public static Item bacon;
+//	public static Item lemonade;
+//	public static Item combustibleLemon;
 	
 	public static void createItems() {
-		uranium = new Uranium();
-		plumbum = new LeadPb();
-		orange = new OrangeFruit();
-		cocoaNibs = new CocoaNibs();
-		chocolateLiquor = new ChocolateLiquor();
-		darkChocolate = new DarkChocolate();
-		milkChocolate = new MilkChocolate();
-		lemon = new Lemon();
-		cherry = new Cherry();
-		glassSword = new GlassSword();
-		bacon = new Bacon();
-		lemonade = new Lemonade();
-		combustibleLemon = new CombustibleLemon();
+		itemMap.put(Uranium.NAME, new Uranium());
+		itemMap.put(LeadPb.NAME, new LeadPb());
+		itemMap.put(OrangeFruit.NAME, new OrangeFruit());
+		itemMap.put(CocoaNibs.NAME, new CocoaNibs());
+		itemMap.put(ChocolateLiquor.NAME, new ChocolateLiquor());
+		itemMap.put(DarkChocolate.NAME, new DarkChocolate());
+		itemMap.put(MilkChocolate.NAME, new MilkChocolate());
+		itemMap.put(Lemon.NAME, new Lemon());
+		itemMap.put(Cherry.NAME, new Cherry());
+		itemMap.put(GlassSword.NAME, new GlassSword());
+		itemMap.put(Bacon.NAME, new Bacon());
+		itemMap.put(Lemonade.NAME, new Lemonade());
+		itemMap.put(CombustibleLemon.NAME, new CombustibleLemon());
+
+	}
+	
+	public static Item getItem(String resourceName) {
+		return itemMap.get(resourceName);
 	}
 	
 	
@@ -66,19 +76,9 @@ public class MultiMakerItems {
 	 * Custom entities that are heavily dependent on Items are also set up here.
 	 */
 	public static void renderItems() {
-		ForgeUtils.renderItem(orange);
-		ForgeUtils.renderItem(uranium);
-		ForgeUtils.renderItem(plumbum);
-		ForgeUtils.renderItem(cocoaNibs);
-		ForgeUtils.renderItem(chocolateLiquor);
-		ForgeUtils.renderItem(darkChocolate);
-		ForgeUtils.renderItem(milkChocolate);
-		ForgeUtils.renderItem(lemon);
-		ForgeUtils.renderItem(cherry);
-		ForgeUtils.renderItem(glassSword);
-		ForgeUtils.renderItem(bacon);
-		ForgeUtils.renderItem(lemonade);
-		ForgeUtils.renderItem(combustibleLemon);
+		for (Item i : itemMap.values()) {
+			ForgeUtils.renderItem(i);
+		}
 		
 		EntityRegistry.registerModEntity(
 				EntityCombustibleLemon.class,
@@ -88,38 +88,30 @@ public class MultiMakerItems {
 				64, 10, true);
 	}
 	
-	@Deprecated
-	public static void renderItems(String modid) {
-		ForgeUtils.renderItem(modid, Uranium.NAME);
-		ForgeUtils.renderItem(modid, LeadPb.NAME);
-		ForgeUtils.renderItem(modid, OrangeFruit.NAME);
-		ForgeUtils.renderItem(modid, CocoaNibs.NAME);
-		ForgeUtils.renderItem(modid, ChocolateLiquor.NAME);
-		ForgeUtils.renderItem(modid, DarkChocolate.NAME);
-		ForgeUtils.renderItem(modid, MilkChocolate.NAME);
-		ForgeUtils.renderItem(modid, Lemon.NAME);
-		ForgeUtils.renderItem(modid, Cherry.NAME);
-		ForgeUtils.renderItem(modid, GlassSword.NAME);
-		ForgeUtils.renderItem(modid, Bacon.NAME);
-		ForgeUtils.renderItem(modid, Lemonade.NAME);
-	}
+	
 	
 	public static void assignFruit(FruitDrops fd) {
-		fd.addFruit((DroppableFruit) orange);
-		fd.addFruit((DroppableFruit) cherry);
-		fd.addFruit((DroppableFruit) lemon);
+		fd.addFruit((DroppableFruit) itemMap.get(OrangeFruit.NAME));
+		fd.addFruit((DroppableFruit) itemMap.get(Cherry.NAME));
+		fd.addFruit((DroppableFruit) itemMap.get(Lemon.NAME));
 	}
 	
 	public static Item getFruitForDrop(DroppableFruit df) {
 		
-		if (df instanceof OrangeFruit) return orange;
-		if (df instanceof Cherry) return cherry;
-		if (df instanceof Lemon) return lemon;
+		if (df instanceof OrangeFruit) return itemMap.get(OrangeFruit.NAME);
+		if (df instanceof Cherry) return itemMap.get(Cherry.NAME);
+		if (df instanceof Lemon) return itemMap.get(Lemon.NAME);
 		
 		return null;
 	}
 	
 	public static void registerRecipes() {
+		Item cocoaNibs = itemMap.get(CocoaNibs.NAME);
+		Item chocolateLiquor = itemMap.get(ChocolateLiquor.NAME);
+		Item darkChocolate = itemMap.get(DarkChocolate.NAME);
+		Item milkChocolate = itemMap.get(MilkChocolate.NAME);
+		Item lemon = itemMap.get(Lemon.NAME);
+		Item combustibleLemon = itemMap.get(CombustibleLemon.NAME);
 		GameRegistry.addSmelting(new ItemStack(Items.DYE, 1, EnumDyeColor.BROWN.getDyeDamage()),
 				new ItemStack(cocoaNibs), 1f);
 		
