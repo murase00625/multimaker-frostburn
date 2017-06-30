@@ -2,6 +2,7 @@ package net.makersville.forge.mods.multimaker.physicalscience;
 
 import java.util.Random;
 
+import net.makersville.forge.mods.multimaker.MultiMakerBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -18,25 +19,15 @@ public class UraniumOre extends Block {
 	
 	public static final String NAME = "uraniumOre";
 	
-	
-	protected void defaultBlockSettings() {
-		ItemBlock ib = new ItemBlock(this);
-		this.setRegistryName(NAME);
-		ib.setRegistryName(NAME);
-		this.setUnlocalizedName(this.getRegistryName().toString());
-		GameRegistry.register(this);
-		GameRegistry.register(ib);
-		
-		this.setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
-		this.setHardness(15f);
-		this.setResistance(20f);
-		this.setHarvestLevel("pickaxe", 2);
-	}
-	
 	public UraniumOre(Uranium drop) {
 		super(Material.ROCK);
 		this.uraniumDrop = drop;
-		defaultBlockSettings();
+		MultiMakerBlocks.initializeBlock(
+				this, NAME, CreativeTabs.BUILDING_BLOCKS);
+
+		this.setHardness(15f);
+		this.setResistance(20f);
+		this.setHarvestLevel("pickaxe", 2);
 	}
 
 	@Override
@@ -53,9 +44,5 @@ public class UraniumOre extends Block {
 	public int quantityDropped(IBlockState state, int fortune, Random random) {
 		return this.least;
 	}
-	
-	
-	
-	
 	
 }

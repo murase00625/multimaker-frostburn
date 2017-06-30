@@ -1,5 +1,6 @@
 package net.makersville.forge.mods.multimaker.physicalscience;
 
+import net.makersville.forge.mods.multimaker.MultiMakerBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -15,14 +16,9 @@ public class LeadBlock extends Block {
 	public LeadBlock(Item pb) {
 		super(new LeadPb.LeadMaterial());
 		this.plumbum = pb;
-		ItemBlock ib = new ItemBlock(this);
-		this.setRegistryName(NAME);
-		ib.setRegistryName(NAME);
-		this.setUnlocalizedName(this.getRegistryName().toString());
-		GameRegistry.register(this);
-		GameRegistry.register(ib);
 		
-		this.setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
+		MultiMakerBlocks.initializeBlock(
+				this, NAME, CreativeTabs.BUILDING_BLOCKS);
 		
 		GameRegistry.addRecipe(new ItemStack(this),
 				"pp",

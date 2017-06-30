@@ -9,6 +9,9 @@ import net.makersville.forge.mods.multimaker.physicalscience.UraniumBlock;
 import net.makersville.forge.mods.multimaker.physicalscience.UraniumOre;
 import net.makersville.forge.mods.util.ForgeUtils;
 import net.minecraft.block.Block;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.ItemBlock;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class MultiMakerBlocks {
 	
@@ -18,6 +21,20 @@ public class MultiMakerBlocks {
 	public static Block uraniumOre;
 	public static Block leadBlock;
 	public static Block uraniumBlock;
+	
+	public static void initializeBlock(
+			Block block,
+			String resourceName,
+			CreativeTabs tab) {
+		block.setRegistryName(resourceName);
+		block.setUnlocalizedName(block.getRegistryName().toString());
+		block.setCreativeTab(tab);
+		GameRegistry.register(block);
+		
+		ItemBlock ib = new ItemBlock(block);
+		ib.setRegistryName(resourceName);
+		GameRegistry.register(ib);
+	}
 		
 	public static void createBlocks() {
 		uraniumOre = new UraniumOre(

@@ -19,6 +19,7 @@ import net.makersville.forge.mods.multimaker.orchard.OrangeFruit;
 import net.makersville.forge.mods.multimaker.physicalscience.LeadPb;
 import net.makersville.forge.mods.multimaker.physicalscience.Uranium;
 import net.makersville.forge.mods.util.ForgeUtils;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.EnumDyeColor;
@@ -32,19 +33,15 @@ public class MultiMakerItems {
 	public static HashMap<String,Item> itemMap =
 			new HashMap<String,Item>();
 	
-//	public static Item orange;
-//	public static Item uranium;
-//	public static Item plumbum;
-//	public static Item cocoaNibs;
-//	public static Item chocolateLiquor;
-//	public static Item darkChocolate;
-//	public static Item milkChocolate;	
-//	public static Item cherry;
-//	public static Item lemon;
-//	public static Item glassSword;
-//	public static Item bacon;
-//	public static Item lemonade;
-//	public static Item combustibleLemon;
+	public static void initializeItem(
+			Item item,
+			String resourceName,
+			CreativeTabs tab) {
+		item.setRegistryName(resourceName);
+		item.setUnlocalizedName(item.getRegistryName().toString());
+		item.setCreativeTab(tab);
+		GameRegistry.register(item);
+	}
 	
 	public static void createItems() {
 		itemMap.put(Uranium.NAME, new Uranium());

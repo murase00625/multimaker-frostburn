@@ -1,5 +1,6 @@
 package net.makersville.forge.mods.multimaker.physicalscience;
 
+import net.makersville.forge.mods.multimaker.MultiMakerBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemBlock;
@@ -12,21 +13,10 @@ public class UraniumBlock extends Block {
 	
 	public UraniumBlock(Uranium uranium) {
 		super(new Uranium.UraniumMaterial());
-		defaultSettings();
-		this.setRecipe(uranium);
-	}
-	
-	public void defaultSettings() {
-		ItemBlock ib = new ItemBlock(this);
-		this.setRegistryName(NAME);
-		ib.setRegistryName(NAME);
-		this.setUnlocalizedName(this.getRegistryName().toString());
-		GameRegistry.register(this);
-		GameRegistry.register(ib);
-		
-		this.setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
+		MultiMakerBlocks.initializeBlock(
+				this, NAME, CreativeTabs.BUILDING_BLOCKS);
 		this.setLightLevel(0.85f);
-		
+		this.setRecipe(uranium);
 	}
 	
 	public void setRecipe(Uranium u) {
